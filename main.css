@@ -69,7 +69,7 @@ button
     font-weight: bold;
     text-transform: uppercase;
     padding: 10px 15px;
-    margin: 20px auto;
+    margin: 20px auto 50px;
     color: #ccc;
     background-color: #555;
     background: -webkit-linear-gradient(#888, #555);
@@ -125,4 +125,9 @@ span {
 
 span:hover {
 	text-decoration: underline;
+}
+
+#main-container p {
+	font-size: 13px;
+	margin: 0 0 50px 25px;
 }
