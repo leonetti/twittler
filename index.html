@@ -68,10 +68,11 @@
         
         function callTweets(){
 	        var index = streams.home.length - 1;
-	        while(index >= 0){
+	        for(var i=0; i<11; i++){
 	          var tweet = streams.home[index];
 	          var $tweet = $('<div class = "tweet"><span>@' + tweet.user + '</span>: ' + tweet.message + '</div>');
 	          var date = '<p>' + tweet.created_at + '</p>';
+	          
 	          
 	          $('#main-container').append($tweet);
 	          $('#main-container').append(date);
