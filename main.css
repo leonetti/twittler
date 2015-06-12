@@ -113,3 +113,16 @@ button:active
     -webkit-animation: none;
     animation: none;
 }
+
+button:focus {
+	outline: none;
+}
+
+span {
+	color: rgb(43, 127, 154);
+	cursor: pointer;
+}
+
+span:hover {
+	text-decoration: underline;
+}

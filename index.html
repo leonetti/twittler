@@ -69,8 +69,7 @@
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div class = "tweet"></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var $tweet = $('<div class = "tweet"><span>@' + tweet.user + '</span>: ' + tweet.message + '</div>');
           $('#main-container').append($tweet);
           index -= 1;
         }
@@ -79,10 +78,9 @@
         	$('#main-container').find('div').remove();
         	index = streams.home.length - 1;
 			for(var i=0; i<11; i++){
-        	  tweet = streams.home[index];
-        	  $tweet = $('<div class = "tweet"></div>');
-        	  $tweet.text('@' + tweet.user + ': ' + tweet.message);
-        	  $('#main-container').append($tweet);
+        	  var tweet = streams.home[index];
+        	  var $tweet = $('<div class = "tweet"><span>@' + tweet.user + '</span>: ' + tweet.message + '</div>');
+           	  $('#main-container').append($tweet);
         	  index -= 1;
 			}
         });
