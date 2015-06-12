@@ -78,7 +78,7 @@
         $('#main-container').on('click', 'button', function(){
         	$('#main-container').find('div').remove();
         	index = streams.home.length - 1;
-			for(var i=0; i<13; i++){
+			for(var i=0; i<12; i++){
         	  tweet = streams.home[index];
         	  $tweet = $('<div class = "tweet"></div>');
         	  $tweet.text('@' + tweet.user + ': ' + tweet.message);
