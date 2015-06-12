@@ -1,25 +1,94 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<link rel="stylesheet" type="text/css" href="main.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
   </head>
   <body>
+  
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
 
+  
+        
+        
+        //HEADER CONTAINER
+        
+        var container = "<div id='container'></div>";
+        $('body').prepend(container);
+        					 
+        var header = "<header></header>";
+        $('#container').append(header);
+        
+        var logo = "<img id='logo' src='images/logo.png'></img>";
+        $('header').append(logo);
+        $('#logo').css({'height':'100px',
+        				'margin-top':'25px',
+        				'float':'left'});
+        
+        var heading = "<h1>Twittler</h1>";
+        $('header').append(heading);
+        
+        var myUserName = "<p>@littlelionman91</p>";
+        $('header').append(myUserName);
+        
+        var mySaying = "<p class='subhead'>If it won't work, try harder.</p>";
+        $('header').append(mySaying);
+        
+        var myCity = "<p class='city'>San Clemente, CA</p>";
+        $('header').append(myCity);
+  
+        var birds = "<img id='birds' src='images/birds.png'></img>";
+        $('header').append(birds);
+        $('#birds').css({'width':'800px',
+        				'margin-top':'25px',
+        				'opacity':'.3'});
+        				
+        				
+        //END HEADER
+        
+        //SEPARATION SECTION
+        
+        var separator = "<div id='separator'></div>";
+        $('#container').append(separator);
+        
+        //END SEPARATION
+        
+        //TWEETS
+        
+        var mainContainer = "<div id='main-container'></div>";
+        $('#container').after(mainContainer);
+        
+        var newTweet = "<button type='button'>Load New Tweets</button>";
+        $('#main-container').append(newTweet);
+        
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
+          var $tweet = $('<div class = "tweet"></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
+          $('#main-container').append($tweet);
           index -= 1;
         }
-
+        
+        $('#main-container').on('click', 'button', function(){
+        	$('#main-container').find('div').remove();
+        	index = streams.home.length - 1;
+			for(var i=0; i<13; i++){
+        	  tweet = streams.home[index];
+        	  $tweet = $('<div class = "tweet"></div>');
+        	  $tweet.text('@' + tweet.user + ': ' + tweet.message);
+        	  $('#main-container').append($tweet);
+        	  index -= 1;
+			}
+        });
+        
+        //END TWEETS
+        
       });
 
     </script>
