@@ -66,23 +66,26 @@
         var newTweet = "<button type='button'>Load New Tweets</button>";
         $('#main-container').append(newTweet);
         
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div class = "tweet"><span>@' + tweet.user + '</span>: ' + tweet.message + '</div>');
-          $('#main-container').append($tweet);
-          index -= 1;
-        }
+        function callTweets(){
+	        var index = streams.home.length - 1;
+	        while(index >= 0){
+	          var tweet = streams.home[index];
+	          var $tweet = $('<div class = "tweet"><span>@' + tweet.user + '</span>: ' + tweet.message + '</div>');
+	          var date = '<p>' + tweet.created_at + '</p>';
+	          
+	          $('#main-container').append($tweet);
+	          $('#main-container').append(date);
+	          
+	          index -= 1;
+	        }
+        };
+        
+        callTweets();
         
         $('#main-container').on('click', 'button', function(){
         	$('#main-container').find('div').remove();
-        	index = streams.home.length - 1;
-			for(var i=0; i<11; i++){
-        	  var tweet = streams.home[index];
-        	  var $tweet = $('<div class = "tweet"><span>@' + tweet.user + '</span>: ' + tweet.message + '</div>');
-           	  $('#main-container').append($tweet);
-        	  index -= 1;
-			}
+        	$('#main-container').find('p').remove();
+        	callTweets();
         });
         
         //END TWEETS
