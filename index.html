@@ -78,6 +78,17 @@
 	          $('#main-container').append(date);
 	          
 	          index -= 1;
+	          
+	          //USER TIMELINE
+	          
+	          $('span').on('click', function(){
+	          	$('#main-container').find('span').remove();
+	          	$('#main-container').find('p').remove();
+	          	$('#main-container').find('.tweet').remove();
+	          });
+	          
+	          //END USER TIMELINE
+	          
 	        }
         };
         
@@ -90,6 +101,13 @@
         });
         
         //END TWEETS
+        
+        
+        
+     
+        
+        
+        
         
       });
 
