@@ -33,7 +33,7 @@
         var heading = "<h1>Twittler</h1>";
         $('header').append(heading);
         
-        var myUserName = "<p>@littlelionman91</p>";
+        var myUserName = "<p class='myUser'>@littlelionman91</p>";
         $('header').append(myUserName);
         
         var mySaying = "<p class='subhead'>If it won't work, try harder.</p>";
@@ -68,28 +68,45 @@
         
         function callTweets(){
 	        var index = streams.home.length - 1;
-	        for(var i=0; i<11; i++){
+	        
+	        var amount = 0;
+	         
+	        for(var i=0; amount<10 && index>-1; i++){
 	          var tweet = streams.home[index];
-	          var $tweet = $('<div class = "tweet"><span>@' + tweet.user + '</span>: ' + tweet.message + '</div>');
+	          var $tweet = $('<div class = "tweet">@<span>' + tweet.user + '</span>: ' + tweet.message + '</div>');
 	          var date = '<p>' + tweet.created_at + '</p>';
 	          
+	          if(arguments[0]){
+	          	if(arguments[0] === streams.home[index].user){
+	          		$('#main-container').append($tweet);
+	          		$('#main-container').append(date);
+	          		amount++;
+	          	}
+	          } else {
+	          	$('#main-container').append($tweet);
+	          	$('#main-container').append(date);
+	          	amount++;
+	          }
 	          
-	          $('#main-container').append($tweet);
-	          $('#main-container').append(date);
+	          
 	          
 	          index -= 1;
 	          
 	          //USER TIMELINE
 	          
-	          $('span').on('click', function(){
+	          $('span').on('click', function(event){
 	          	$('#main-container').find('span').remove();
 	          	$('#main-container').find('p').remove();
 	          	$('#main-container').find('.tweet').remove();
+	          	
+	          	$('.myUser').text('@' + event.target.innerHTML);
+	          	callTweets(event.target.innerHTML);
+	          	
 	          });
 	          
 	          //END USER TIMELINE
 	          
-	        }
+	        } //END FOR LOOP
         };
         
         callTweets();
@@ -97,6 +114,7 @@
         $('#main-container').on('click', 'button', function(){
         	$('#main-container').find('div').remove();
         	$('#main-container').find('p').remove();
+        	$('.myUser').text('@littlelionman91');
         	callTweets();
         });
         
